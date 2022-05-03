@@ -13,34 +13,40 @@ public class MarkdownParseTest {
     }
 
     @Test
-    public void markdownTestFile1() throws IOException{
+    public void file1() throws IOException{
         MarkdownParse parse = new MarkdownParse();
-        ArrayList<String> links;
+        Path fileName = Path.of("maketestfile1.md");
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        ArrayList<String> expectedLinks = new ArrayList<String>();
         
-    links = parse.getLinks(Files.readString(Path.of("maketestfile1.md")));
-        assertEquals(links.size(), 1);
-        assertEquals(links.get(0), "https://something.com");
+        ArrayList<String> links = parse.getLinks(content);
+            assertEquals(links.size(), 1);
+            assertEquals(links.get(0), "https://something.com");
     }
 
     @Test
-    public void markdownTestFile2() throws IOException{
+    public void file2() throws IOException{
         MarkdownParse parse = new MarkdownParse();
-        ArrayList<String> links;
-        
-    links = parse.getLinks(Files.readString(Path.of("maketestfile2.md")));
-        assertEquals(links.size(), 2);
-        assertEquals(links.get(0), "https://something.com");
-        assertEquals(links.get(1), "some-thing.html");
+        Path fileName = Path.of("maketestfile2.md");
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        ArrayList<String> expectedLinks = new ArrayList<String>();
+
+        ArrayList<String> links = parse.getLinks(content);
+            assertEquals(links.size(), 2);
+            assertEquals(links.get(0), "https://something.com");
+            assertEquals(links.get(1), "some-thing.html");
     }
 
     @Test
-    public void markdownTestFile3() throws IOException{
+    public void file3() throws IOException{
         MarkdownParse parse = new MarkdownParse();
-        ArrayList<String> links;
+        Path fileName = Path.of("maketestfile3.md");
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        ArrayList<String> expectedLinks = new ArrayList<String>();
         
-        links = parse.getLinks(Files.readString(Path.of("maketestfile3.md")));
-        assertEquals(links.size(), 1);
-        assertEquals(links.get(0), "some-thing.html");
+        ArrayList<String> links = parse.getLinks(content);
+            assertEquals(links.size(), 1);
+            assertEquals(links.get(0), "some-thing.html");
     }
 
 }
