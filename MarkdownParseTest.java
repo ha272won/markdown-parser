@@ -12,41 +12,62 @@ public class MarkdownParseTest {
         assertEquals(2, 1 + 1);
     }
 
+public class MarkdownParseTest {
     @Test
-    public void file1() throws IOException{
-        MarkdownParse parse = new MarkdownParse();
+    public void addition() { 
+        assertEquals(2, 1 + 1);
+    }
+
+    @Test
+    public void testDefaultFile() throws IOException{
+        Path fileName = Path.of("test-file.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+
+        ArrayList<String> expectedOutput = new ArrayList<>();
+        expectedOutput.add("https://something.com");
+        expectedOutput.add("some-thing.html");
+
+        assertEquals(expectedOutput, links);
+    }
+
+    @Test
+    public void test1() throws IOException{
         Path fileName = Path.of("maketestfile1.md");
+        String content = Files.readString(fileName);
         ArrayList<String> links = MarkdownParse.getLinks(content);
-        ArrayList<String> expectedLinks = new ArrayList<String>();
-        
-        ArrayList<String> links = parse.getLinks(content);
-            assertEquals(links.size(), 1);
-            assertEquals(links.get(0), "https://something.com");
+
+        ArrayList<String> expectedOutput = new ArrayList<>();
+        expectedOutput.add("www.google.com");
+        expectedOutput.add("www.youtube.com");
+        expectedOutput.add("reddit.com");
+
+        assertEquals(expectedOutput, links);
     }
 
     @Test
-    public void file2() throws IOException{
-        MarkdownParse parse = new MarkdownParse();
+    public void test2() throws IOException{
         Path fileName = Path.of("maketestfile2.md");
+        String content = Files.readString(fileName);
         ArrayList<String> links = MarkdownParse.getLinks(content);
-        ArrayList<String> expectedLinks = new ArrayList<String>();
 
-        ArrayList<String> links = parse.getLinks(content);
-            assertEquals(links.size(), 2);
-            assertEquals(links.get(0), "https://something.com");
-            assertEquals(links.get(1), "some-thing.html");
+        ArrayList<String> expectedOutput = new ArrayList<>();
+        expectedOutput.add("No links found");
+
+        assertEquals(expectedOutput, links);
     }
 
     @Test
-    public void file3() throws IOException{
-        MarkdownParse parse = new MarkdownParse();
+    public void test3() throws IOException{
         Path fileName = Path.of("maketestfile3.md");
+        String content = Files.readString(fileName);
         ArrayList<String> links = MarkdownParse.getLinks(content);
-        ArrayList<String> expectedLinks = new ArrayList<String>();
-        
-        ArrayList<String> links = parse.getLinks(content);
-            assertEquals(links.size(), 1);
-            assertEquals(links.get(0), "some-thing.html");
+
+        ArrayList<String> expectedOutput = new ArrayList<>();
+        expectedOutput.add("No links found");
+
+        assertEquals(expectedOutput, links);
     }
+
 
 }
