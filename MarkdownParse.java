@@ -5,21 +5,30 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
+
 public class MarkdownParse {
 
     public static ArrayList<String> getLinks(String markdown) {
+        if(!(markdown.contains("(")) || !(markdown.contains(")"))){
+            ArrayList<String> ans = new ArrayList<>();
+            ans.add("No links found");
+
+            return ans;
+        }
+        
         ArrayList<String> toReturn = new ArrayList<>();
-        // find the next [, then find the ], then find the (, then read link upto next )
+        //find the next [, then find the ], then find the (, then read link upto next )
         int currentIndex = 0;
         while(currentIndex < markdown.length()) {
             int openBracket = markdown.indexOf("[", currentIndex);
             int closeBracket = markdown.indexOf("]", openBracket);
+
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
+            //System.out.println(markdown.substring(openParen + 1, closeParen));
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
         }
-
         return toReturn;
     }
 
@@ -30,4 +39,4 @@ public class MarkdownParse {
         ArrayList<String> links = getLinks(content);
 	    System.out.println(links);
     }
-} 
+}
