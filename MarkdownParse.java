@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class MarkdownParse {
 	public static ArrayList<String> getLinks(String markdown) {
-		ArrayList<String> ans = new ArrayList<>();
+		ArrayList<String> returnValue = new ArrayList<>();
 		int currentIndex = 0;
            
         	while(currentIndex < markdown.length()) {
@@ -17,7 +17,8 @@ public class MarkdownParse {
 			int closeBracket = markdown.indexOf("]", openBracket);
 			int closeParen = markdown.indexOf(")", openParen);
 			
-			
+		}
+        	return returnValue;	
 	}
 
 	public static void main(String[] args) throws IOException {
