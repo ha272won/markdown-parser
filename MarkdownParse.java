@@ -11,18 +11,29 @@ public class MarkdownParse {
 		ArrayList<String> toReturn = new ArrayList<>();
 		int currentIndex = 0;
            
-        	while(currentIndex < markdown.length()) {
+        	while (currentIndex < markdown.length()) {
 			int openBracket = markdown.indexOf("[", currentIndex);
 			int closeBracket = markdown.indexOf("]", openBracket);
 			int openParen = markdown.indexOf("(", closeBracket);
 			int closeParen = markdown.indexOf(")", openParen);
 			
 
-            if(openBracket == -1 || closeBracket == -1 || openParen == -1 || 
-               closeParen == -1) {
-                break;
-            }
-
+            	if (openBracket == -1) {
+                	break;
+            	}
+			
+		if (closeBracket == -1 {
+                	break;
+            	}
+			
+		if (openParen == -1 ) {
+			break;
+            	}
+		    
+               if (closeParen == -1) {
+		       break;
+	       }
+		    
             if(markdown.charAt(0) == '!'){
                 currentIndex = closeParen + 1;
                 continue;
