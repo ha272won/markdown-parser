@@ -14,7 +14,7 @@ public class MarkdownParseTest {
     }
 
     @Test
-    public void test() throws IOException {
+    public void test1() throws IOException {
         Path testFile = Path.of("test-file.md");
 	    String readFile = Files.readString(testFile);
         ArrayList<String> newList = MarkdownParse.getLinks(readFile);
