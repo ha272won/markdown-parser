@@ -48,4 +48,27 @@ public class MarkdownParseTest {
         List<String> expectedList = List.of();
         assertEquals(expectedList,newList);
     }
+	
+    @Test
+    public void testSnippet1() {
+        List<String> expected = List.of("`google.com", "google.com", "ucsd.edu");
+	List<String> actual = MarkdownParse.getLinks("Snippet1.md");
+        assertEquals(expected, actual);
+    }
+	
+    @Test
+    public void testSnippet2() {
+        List<String> expected = List.of("`a.com", "a.com(())", "example.com");
+	List<String> actual = MarkdownParse.getLinks("Snippet2.md");
+        assertEquals(expected, actual);
+    }
+	
+    @Test
+    public void testSnippet1() {
+        List<String> expected = List.of("https://www.twitter.com", "https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule", "https://cse.ucsd.edu/");
+	List<String> actual = MarkdownParse.getLinks("Snippet3.md");
+        assertEquals(expected, actual);
+    }
+
+
 }
