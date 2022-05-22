@@ -64,7 +64,7 @@ public class MarkdownParseTest {
     }
 	
     @Test
-    public void testSnippet1() {
+    public void testSnippet3() {
         List<String> expected = List.of("https://www.twitter.com", "https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule", "https://cse.ucsd.edu/");
 	List<String> actual = MarkdownParse.getLinks("Snippet3.md");
         assertEquals(expected, actual);

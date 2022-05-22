@@ -22,7 +22,7 @@ public class MarkdownParse {
                 	break;
             	}
 			
-		if (closeBracket == -1 {
+		if (closeBracket == -1) {
                 	break;
             	}
 			
