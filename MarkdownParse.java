@@ -38,6 +38,7 @@ import java.util.Map;
                 counter += 1;
             }
             return result;
+            System.out.print(counter);
         }
         else {
             Path p = dirOrFile.toPath();
